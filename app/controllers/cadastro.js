@@ -1,5 +1,5 @@
 module.exports.cadastro = function(application, req, res){
-  res.render('cadastro');
+  res.render('cadastro', {validacao: {}, dadosForm: {}});
 }
 
 module.exports.cadastrar = function(application, req, res){
@@ -11,11 +11,11 @@ module.exports.cadastrar = function(application, req, res){
   req.assert('senha', 'Senha não pode ser vazio').notEmpty();
   req.assert('casa', 'Casa não pode ser vazio').notEmpty();
 
-  var erros = req.validationsErrors();
+  var erros = req.validationErrors();
 
   if(erros){
-    res.render('cadastro', {validacao: erros});
-    return;
+    res.render('cadastro', {validacao: erros, dadosForm});
+    return
   }
 
   res.send('podemos cadastrar');
