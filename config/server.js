@@ -32,8 +32,8 @@ app.use(expressValidator());
 /* configura o middleware express-session */
 app.use(expressSession({
 	secret: 'asfpinsdvcicoieionvaxmzxlmafi',
-	resave: false,
-	saveUninitialized: false
+	resave: true,
+	saveUninitialized: true
 }));
 
 /* efetua o autoload das rotas, dos models e dos controllers para o objeto app */
