@@ -55,6 +55,10 @@ module.exports.ordenar_acao_sudito = function(application, req, res){
     res.redirect('jogo?comando_invalido=S');
     return;
   }
-  console.log(dadosForm);
-  res.send('tudo ok!');
+  var connection = application.config.dbConnection;
+  var JogoDAO = new application.app.models.JogoDAO(connection);
+
+  JogoDAO.acao(dadosForm);
+
+  res.send("tudo ok");
 }
